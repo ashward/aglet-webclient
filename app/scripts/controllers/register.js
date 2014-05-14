@@ -8,13 +8,18 @@ angular.module('agletWebclientApp')
       
       $scope.usernameExists = {};
       
-      $scope.$watch("registration.username", function(newValue) {
-          registrationService.usernameExists.get({username: newValue}, function(data) {
-              $scope.usernameExists.result = data;
-          });
+      $scope.$watch("user.username", function(newValue) {
+          $scope.usernameExists.result = registrationService.usernameExists.get({username: newValue});
       });
       
-      $scope.onSubmit = function(registration) {
+      $scope.onSubmit = function(user, account) {
+          var data = {
+              'user': user,
+              'account': account
+          };
           
+          registrationService.register.save(data, function() {
+              alert("Registered");
+          })
       }
   }]);

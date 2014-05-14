@@ -1,21 +1,28 @@
 <h2 translate>registration.title</h2>
-<form role="form">
-    <div class="form-group">
+<form role="form" class="form-horizontal">
+    <div class="form-group" ng-class="(usernameExists.result.exists) ? 'has-error has-feedback':''">
         <label for="register-username" translate>registration.fields.username</label>
         <div class="input-group">
-            <input type="text" name="username" id="register-username" class="form-control" ng-model="registration.username" />
+            <input type="text" name="username" id="register-username" class="form-control" ng-model="user.username" />
             <span class="input-group-addon"><i class="fa fa-spinner fa-spin"></i></span>
         </div>
     </div>
     <div ng-show="usernameExists.result.exists">
         <div class="alert alert-danger">{{'registration.errors.username-exists'|translate}} - {{'registration.errors.username-suggestions-header'|translate}}:
             <ul class="list-unstyled">
-                <li ng-repeat="suggestion in usernameExists.result.suggestions">{{suggestion}}</li>
+                <li ng-repeat="suggestion in usernameExists.result.suggestions"><a ng-click="user.username = suggestion">{{suggestion}}</a></li>
             </ul>
         </div>
     </div>
     <div class="form-group">
         <label for="register-name" translate>registration.fields.name</label>
-        <input type="text" name="name" id="register-name" class="form-control" ng-model="registration.name" />
+        <input type="text" name="name" id="register-name" class="form-control" ng-model="user.name" />
+    </div>
+    <div class="form-group">
+        <label for="register-name" translate>registration.fields.password</label>
+        <input type="password" name="password" id="register-name" class="form-control" ng-model="account.password" />
+    </div>
+    <div class="form=group">
+        <button ng-click="onSubmit(user,account)" class="btn btn-primary pull-right" translate>registration.fields.submit</button>
     </div>
 </form>

@@ -10,7 +10,9 @@ angular.module('agletWebclientApp')
                         'title': 'Register an account',
                         'fields': {
                             'username': 'Choose a username',
-                            'name' : 'What\'s your name?'
+                            'name' : 'What\'s your name?',
+                            'password' : 'Choose yourself a password',
+                            'submit' : 'Register'
                         },
                         'errors': {
                             'username-exists': 'Unfortunately someone\'s already nabbed that username',
